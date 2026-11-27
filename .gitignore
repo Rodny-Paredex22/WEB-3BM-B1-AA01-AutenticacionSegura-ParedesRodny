@@ -1,0 +1,35 @@
+# .NET & Visual Studio
+# -------------------
+# Build results
+bin/
+obj/
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.csproj.user
+*.sln.docstates
+# VS temporary files
+.vs/
+# NuGet packages (if not using package restore)
+*.nupkg
+# Restore packages folder (if using packages folder)
+packages/
+# Publish output
+publish/
+# ASP.NET Core secrets (user‑secrets)
+secrets.json
+# Log files
+*.log
+# DotCover / ReSharper caches
+*.dotCover
+# Rider files
+.idea/
+# Other IDE caches
+*.ide
+# OS generated files
+[Dd]esktop.ini
+Thumbs.db
+# Temporary files
+*.tmp
+# End of .gitignore

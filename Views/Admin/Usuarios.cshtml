@@ -1,0 +1,81 @@
+@model List<UsuarioAdminViewModel>
+@{
+    ViewData["Title"] = "Administración de Usuarios";
+}
+
+<div class="card shadow-sm card-magna">
+    <div class="card-body p-4">
+        <h3 class="card-title mb-3">Panel de Administración de Usuarios</h3>
+        <p class="text-muted small mb-4">Gestiona roles y estados de acceso de los usuarios registrados en MagnaTaller.</p>
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Rol Actual</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var u in Model)
+                    {
+                        <tr>
+                            <td>@u.NombreCompleto</td>
+                            <td>@u.Email</td>
+                            <td>
+                                <span class="badge @(u.Rol == "Administrador" ? "bg-warning text-dark" : "bg-secondary")">
+                                    @u.Rol
+                                </span>
+                            </td>
+                            <td>
+                                @if (u.EstaBloqueado)
+                                {
+                                    <span class="badge bg-warning text-dark">Bloqueado</span>
+                                }
+                                else if (u.Activo)
+                                {
+                                    <span class="badge bg-success">Activo</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-danger">Inactivo</span>
+                                }
+                            </td>
+                            <td>
+                                <div class="d-flex gap-2 flex-wrap">
+                                    @if (!u.EsUltimoAdmin)
+                                    {
+                                        <form asp-action="CambiarRol" method="post" class="d-inline">
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="usuarioId" value="@u.Id" />
+                                            <input type="hidden" name="nuevoRol" value="@(u.Rol == "Administrador" ? "Cliente" : "Administrador")" />
+                                            <button type="submit" class="btn btn-sm btn-outline-primary">
+                                                Cambiar a @(u.Rol == "Administrador" ? "Cliente" : "Admin")
+                                            </button>
+                                        </form>
+
+                                        <form asp-action="CambiarEstado" method="post" class="d-inline">
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="usuarioId" value="@u.Id" />
+                                            <input type="hidden" name="activo" value="@(!u.Activo)" />
+                                            <button type="submit" class="btn btn-sm @(u.Activo ? "btn-outline-danger" : "btn-outline-success")">
+                                                @(u.Activo ? "Deshabilitar" : "Habilitar")
+                                            </button>
+                                        </form>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted small fst-italic">Último Admin protegido</span>
+                                    }
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

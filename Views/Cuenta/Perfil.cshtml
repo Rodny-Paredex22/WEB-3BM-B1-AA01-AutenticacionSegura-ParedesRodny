@@ -1,0 +1,59 @@
+@model PerfilViewModel
+@{
+    ViewData["Title"] = "Mi Perfil";
+}
+
+<div class="row g-4">
+    <div class="col-md-6">
+        <div class="card shadow-sm card-magna">
+            <div class="card-body p-4">
+                <h4 class="card-title mb-3">Datos de la Cuenta</h4>
+                <dl class="row mb-0">
+                    <dt class="col-sm-4">Nombre:</dt>
+                    <dd class="col-sm-8">@Model.NombreCompleto</dd>
+
+                    <dt class="col-sm-4">Correo:</dt>
+                    <dd class="col-sm-8">@Model.Email</dd>
+
+                    <dt class="col-sm-4">Rol:</dt>
+                    <dd class="col-sm-8"><span class="badge bg-dark">@Model.Rol</span></dd>
+
+                    <dt class="col-sm-4">Estado:</dt>
+                    <dd class="col-sm-8">
+                        <span class="badge @(Model.Activo ? "bg-success" : "bg-danger")">
+                            @(Model.Activo ? "Activo" : "Inactivo")
+                        </span>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card shadow-sm card-magna">
+            <div class="card-body p-4">
+                <h4 class="card-title mb-3">Cambiar Contraseña</h4>
+                <form asp-controller="Cuenta" asp-action="CambiarContrasena" method="post">
+                    @Html.AntiForgeryToken()
+
+                    <div class="mb-3">
+                        <label for="PasswordActual" class="form-label">Contraseña Actual</label>
+                        <input type="password" name="PasswordActual" id="PasswordActual" class="form-control" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="NuevaPassword" class="form-label">Nueva Contraseña</label>
+                        <input type="password" name="NuevaPassword" id="NuevaPassword" class="form-control" required minlength="6" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="ConfirmarPassword" class="form-label">Confirmar Nueva Contraseña</label>
+                        <input type="password" name="ConfirmarPassword" id="ConfirmarPassword" class="form-control" required minlength="6" />
+                    </div>
+
+                    <button type="submit" class="btn btn-magna w-100">Actualizar Contraseña</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
