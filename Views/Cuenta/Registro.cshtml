@@ -28,15 +28,21 @@
 
                     <div class="mb-3">
                         <label asp-for="Password" class="form-label"></label>
-                        <input asp-for="Password" class="form-control" />
+                        <div class="input-group">
+                            <input asp-for="Password" class="form-control" />
+                            <button type="button" class="btn btn-outline-secondary" onclick="alternarContrasena(this)" title="Mostrar u ocultar contraseña" aria-label="Mostrar u ocultar contraseña">●</button>
+                        </div>
                         <span asp-validation-for="Password" class="text-danger small"></span>
                     </div>
 
                     <div class="mb-3">
                         <label asp-for="ConfirmarPassword" class="form-label"></label>
-                        <input asp-for="ConfirmarPassword" class="form-control" />
+                        <div class="input-group">
+                            <input asp-for="ConfirmarPassword" class="form-control" />
+                            <button type="button" class="btn btn-outline-secondary" onclick="alternarContrasena(this)" title="Mostrar u ocultar contraseña" aria-label="Mostrar u ocultar contraseña">●</button>
+                        </div>
                         <span asp-validation-for="ConfirmarPassword" class="text-danger small"></span>
-                    </div>
+                    </div>  
 
                     <button type="submit" class="btn btn-magna w-100">Registrarse</button>
                 </form>

@@ -38,17 +38,26 @@
 
                     <div class="mb-3">
                         <label for="PasswordActual" class="form-label">Contraseña Actual</label>
-                        <input type="password" name="PasswordActual" id="PasswordActual" class="form-control" required />
+                        <div class="input-group">
+                            <input type="password" name="PasswordActual" id="PasswordActual" class="form-control" required />
+                            <button type="button" class="btn btn-outline-secondary" onclick="alternarContrasena(this)" title="Mostrar u ocultar contraseña" aria-label="Mostrar u ocultar contraseña">●</button>
+                        </div>
                     </div>
 
                     <div class="mb-3">
                         <label for="NuevaPassword" class="form-label">Nueva Contraseña</label>
-                        <input type="password" name="NuevaPassword" id="NuevaPassword" class="form-control" required minlength="6" />
+                        <div class="input-group">
+                            <input type="password" name="NuevaPassword" id="NuevaPassword" class="form-control" required minlength="6" />
+                            <button type="button" class="btn btn-outline-secondary" onclick="alternarContrasena(this)" title="Mostrar u ocultar contraseña" aria-label="Mostrar u ocultar contraseña">●</button>
+                        </div>
                     </div>
 
                     <div class="mb-3">
                         <label for="ConfirmarPassword" class="form-label">Confirmar Nueva Contraseña</label>
-                        <input type="password" name="ConfirmarPassword" id="ConfirmarPassword" class="form-control" required minlength="6" />
+                        <div class="input-group">
+                            <input type="password" name="ConfirmarPassword" id="ConfirmarPassword" class="form-control" required minlength="6" />
+                            <button type="button" class="btn btn-outline-secondary" onclick="alternarContrasena(this)" title="Mostrar u ocultar contraseña" aria-label="Mostrar u ocultar contraseña">●</button>
+                        </div>
                     </div>
 
                     <button type="submit" class="btn btn-magna w-100">Actualizar Contraseña</button>

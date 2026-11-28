@@ -60,7 +60,7 @@
                                         <form asp-action="CambiarEstado" method="post" class="d-inline">
                                             @Html.AntiForgeryToken()
                                             <input type="hidden" name="usuarioId" value="@u.Id" />
-                                            <input type="hidden" name="activo" value="@(!u.Activo)" />
+                                            <input type="hidden" name="activo" value="@(u.Activo ? "false" : "true")" />
                                             <button type="submit" class="btn btn-sm @(u.Activo ? "btn-outline-danger" : "btn-outline-success")">
                                                 @(u.Activo ? "Deshabilitar" : "Habilitar")
                                             </button>

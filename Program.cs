@@ -25,7 +25,7 @@ builder.Services.AddIdentity<UsuarioMagna, IdentityRole>(options =>
     // Bloqueo por 3 intentos fallidos durante 1 minuto
     options.Lockout.MaxFailedAccessAttempts = 3;
     options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(1);
-    options.Lockout.AllowedForNewUsers = true;
+    options.Lockout.AllowedForNewUsers = true; 
 })
 .AddEntityFrameworkStores<ApplicationDbContext>()
 .AddDefaultTokenProviders();

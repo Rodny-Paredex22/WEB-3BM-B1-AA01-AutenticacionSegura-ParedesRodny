@@ -22,7 +22,10 @@
 
                     <div class="mb-3">
                         <label asp-for="Password" class="form-label"></label>
-                        <input asp-for="Password" class="form-control" placeholder="••••••••" />
+                        <div class="input-group">
+                            <input asp-for="Password" class="form-control" placeholder="••••••••" />
+                            <button type="button" class="btn btn-outline-secondary" onclick="alternarContrasena(this)" title="Mostrar u ocultar contraseña" aria-label="Mostrar u ocultar contraseña">●</button>
+                        </div>
                         <span asp-validation-for="Password" class="text-danger small"></span>
                     </div>
 
